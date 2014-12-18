@@ -1,0 +1,4 @@
+#!/system/bin/sh
+
+cd /debug; watch "cat prcmu-qos/ape_requirements; echo; cat prcmu-qos/ddr_requirements; echo -e '\nAPE:'; cat prcmu/ape_{opp,stats}; echo -e '\nDDR:'; cat prcmu/ddr_{opp,stats}"
+

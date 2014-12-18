@@ -1,0 +1,16 @@
+
+ss=${1:-3}
+while true; do
+	load=`cat /sys/kernel/mali/mali_gpu_load`
+	clock=`cat /sys/kernel/mali/mali_gpu_clock`
+	fs=`cat /sys/kernel/mali/mali_gpu_fullspeed`
+	vape=`cat /sys/kernel/mali/mali_gpu_vape`
+	if [ "$fs" == "1" ]; then
+		fs="FULL SPEED";
+	else
+		fs="HALF SPEED";
+	fi
+	
+	echo "$load $clock ($fs) @ $vape"
+	sleep $ss
+done

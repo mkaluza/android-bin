@@ -1,0 +1,3 @@
+#!/system/bin/sh
+
+cat /sys/kernel/abb-chargalg/eoc_status
