@@ -1,14 +1,18 @@
 #!/system/bin/sh
 
-# freq[MHz] [start voltage[hex]]
 freq=$1
 start=$2
+if [ -z "$freq" ]; then
+	echo "Usage: $0 freq[MHz] [start_voltage[hex]]"
+	exit 1
+fi
 
 ps=/sys/devices/platform/ab8500-i2c.0/ab8500-fg.0/power_supply/ab8500_fg
 set -e
 
 killall busyloop || true
 
+echo uv > /sys/power/wake_lock
 echo userspace > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 echo $((freq*1000)) > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 
